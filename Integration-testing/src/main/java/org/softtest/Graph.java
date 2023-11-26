@@ -3,96 +3,102 @@ package org.softtest;
 import java.util.*;
 
 public class Graph {
-    protected int V; // Number of vertices
-    protected LinkedList<Integer>[] adjList; // Adjacency list representation
+    protected int V;
+    protected LinkedList<Integer>[] adjList;
 
-    public Graph(int V) {
-        this.V = V;
+    public Graph(int vertices) {
+        V = vertices;
         adjList = new LinkedList[V];
-        for (int i = 0; i < V; ++i)
+        for (int i = 0; i < V; ++i) {
             adjList[i] = new LinkedList<>();
+        }
     }
 
-    public void addEdge(int v, int w) {
-        adjList[v].add(w);
+    public void addEdge(int source, int destination) {
+        adjList[source].add(destination);
     }
 
-    public void BFS(int start) {
+    public int[] BFS(int start) {
         boolean[] visited = new boolean[V];
         LinkedList<Integer> queue = new LinkedList<>();
+        ArrayList<Integer> result = new ArrayList<>();
 
         visited[start] = true;
         queue.add(start);
 
         while (!queue.isEmpty()) {
             start = queue.poll();
-            System.out.print(start + " ");
+            result.add(start);
 
-            for (int n : adjList[start]) {
-                if (!visited[n]) {
-                    visited[n] = true;
-                    queue.add(n);
+            Iterator<Integer> iterator = adjList[start].listIterator();
+            while (iterator.hasNext()) {
+                int next = iterator.next();
+                if (!visited[next]) {
+                    visited[next] = true;
+                    queue.add(next);
                 }
             }
         }
-        System.out.println();
+
+        int[] resultArray = result.stream().mapToInt(Integer::intValue).toArray();
+        return resultArray;
     }
 
-    public void DFSUtil(int v, boolean[] visited) {
-        visited[v] = true;
-        System.out.print(v + " ");
+    public int[] DFS(int start) {
+        boolean[] visited = new boolean[V];
+        ArrayList<Integer> result = new ArrayList<>();
+        DFSUtil(start, visited, result);
 
-        for (int n : adjList[v]) {
-            if (!visited[n]) {
-                DFSUtil(n, visited);
+        int[] resultArray = result.stream().mapToInt(Integer::intValue).toArray();
+        return resultArray;
+    }
+
+    private void DFSUtil(int vertex, boolean[] visited, ArrayList<Integer> result) {
+        visited[vertex] = true;
+        result.add(vertex);
+
+        Iterator<Integer> iterator = adjList[vertex].listIterator();
+        while (iterator.hasNext()) {
+            int next = iterator.next();
+            if (!visited[next]) {
+                DFSUtil(next, visited, result);
             }
         }
     }
 
-    public void DFS(int start) {
-        boolean[] visited = new boolean[V];
-        DFSUtil(start, visited);
-        System.out.println();
-    }
-
-    public void dijkstra(int start) {
-        PriorityQueue<Node> pq = new PriorityQueue<>(V, Comparator.comparingInt(a -> a.weight));
+    public int[] dijkstra(int start) {
         int[] dist = new int[V];
+        boolean[] visited = new boolean[V];
         Arrays.fill(dist, Integer.MAX_VALUE);
         dist[start] = 0;
-        pq.add(new Node(start, 0));
 
-        while (!pq.isEmpty()) {
-            int u = pq.poll().vertex;
+        for (int count = 0; count < V - 1; count++) {
+            int u = minDistance(dist, visited);
+            visited[u] = true;
 
-            for (int v : adjList[u]) {
-                int weight = getWeight(u, v); // Function to get weight of edge u-v
-                if (dist[v] > dist[u] + weight) {
-                    dist[v] = dist[u] + weight;
-                    pq.add(new Node(v, dist[v]));
+            for (int v = 0; v < V; v++) {
+                if (!visited[v] && adjList[u].contains(v) && dist[u] != Integer.MAX_VALUE && dist[u] + 1 < dist[v]) {
+                    dist[v] = dist[u] + 1;
                 }
             }
         }
-
         System.out.println("Shortest distances from vertex " + start + ":");
         for (int i = 0; i < V; i++) {
             System.out.println("Vertex " + i + ": " + dist[i]);
         }
+        return dist;
     }
 
-    private static class Node {
-        int vertex;
-        int weight;
+    private int minDistance(int[] dist, boolean[] visited) {
+        int min = Integer.MAX_VALUE;
+        int minIndex = -1;
 
-        public Node(int vertex, int weight) {
-            this.vertex = vertex;
-            this.weight = weight;
+        for (int v = 0; v < V; v++) {
+            if (!visited[v] && dist[v] <= min) {
+                min = dist[v];
+                minIndex = v;
+            }
         }
-    }
-
-    // Function to get weight of edge between vertices u and v
-    private int getWeight(int u, int v) {
-        // Replace this with your implementation to get weight from an edge list or matrix
-        return 1; // For now, assuming all weights are 1
+        return minIndex;
     }
 }

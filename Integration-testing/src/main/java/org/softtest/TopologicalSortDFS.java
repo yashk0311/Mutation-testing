@@ -1,38 +1,45 @@
 package org.softtest;
 
-import java.util.Stack;
+import java.util.*;
 
 public class TopologicalSortDFS extends Graph {
-    public TopologicalSortDFS(int V) {
-        super(V);
+    private Stack<Integer> stack;
+
+    public TopologicalSortDFS(int vertices) {
+        super(vertices);
+        stack = new Stack<>();
     }
 
-    public void topologicalSort() {
-        Stack<Integer> stack = new Stack<>();
+    public int[] topologicalSort() {
         boolean[] visited = new boolean[V];
 
         for (int i = 0; i < V; i++) {
             if (!visited[i]) {
-                topologicalSortUtil(i, visited, stack);
+                topologicalSortUtil(i, visited);
             }
         }
 
+        int[] result = new int[V];
+        int index = 0;
         System.out.println("Topological Sort:");
-        while (!stack.empty()) {
-            System.out.print(stack.pop() + " ");
+        while (!stack.isEmpty()) {
+            int a = stack.pop();
+            result[index++] = a;
+            System.out.print(a + " ");
         }
-        System.out.println();
+        return result;
     }
 
-    public void topologicalSortUtil(int v, boolean[] visited, Stack<Integer> stack) {
-        visited[v] = true;
+    private void topologicalSortUtil(int vertex, boolean[] visited) {
+        visited[vertex] = true;
 
-        for (int n : adjList[v]) {
-            if (!visited[n]) {
-                topologicalSortUtil(n, visited, stack);
+        Iterator<Integer> iterator = adjList[vertex].listIterator();
+        while (iterator.hasNext()) {
+            int next = iterator.next();
+            if (!visited[next]) {
+                topologicalSortUtil(next, visited);
             }
         }
-
-        stack.push(v);
+        stack.push(vertex);
     }
 }
