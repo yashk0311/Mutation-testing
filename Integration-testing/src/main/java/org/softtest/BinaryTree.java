@@ -1,3 +1,5 @@
+package org.softtest;
+
 public class BinaryTree extends Tree {
 
     public BinaryTree() {

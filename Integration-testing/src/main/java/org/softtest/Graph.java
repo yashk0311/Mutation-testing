@@ -1,3 +1,5 @@
+package org.softtest;
+
 import java.util.*;
 
 public class Graph {
