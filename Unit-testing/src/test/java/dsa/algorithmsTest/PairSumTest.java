@@ -1,10 +1,8 @@
 package dsa.algorithmsTest;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import dsa.algorithms.Knapsack;
-import dsa.algorithms.Pair;
+import helper.methods.Pair;
 import dsa.algorithms.PairSum;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -26,7 +24,7 @@ public class PairSumTest {
 
         List<Pair<Integer, Integer>> result = findSums.find(inputArray, 3);
 
-        assertTrue(result.isEmpty());
+        Assertions.assertTrue(result.isEmpty());
     }
 
     @Test public void FindEveryPair() {
@@ -35,8 +33,8 @@ public class PairSumTest {
 
         List<Pair<Integer, Integer>> result = findSums.find(inputArray, inputValue);
 
-        assertTrue(result.contains(new Pair<Integer, Integer>(5, 2)));
-        assertTrue(result.contains(new Pair<Integer, Integer>(6, 1)));
+        Assertions.assertTrue(result.contains(new Pair<Integer, Integer>(5, 2)));
+        Assertions.assertTrue(result.contains(new Pair<Integer, Integer>(6, 1)));
     }
 
     @Test public void NegativeIntegers() {
@@ -45,7 +43,7 @@ public class PairSumTest {
 
         List<Pair<Integer, Integer>> result = findSums.find(inputArray, inputValue);
 
-        assertTrue(result.contains(new Pair<Integer, Integer>(-17, 9)));
+        Assertions.assertTrue(result.contains(new Pair<Integer, Integer>(-17, 9)));
     }
 
     @Test public void NullArrays_Linear() {
@@ -61,7 +59,7 @@ public class PairSumTest {
 
         List<Pair<Integer, Integer>> result = findSums.findLinearComplexityOrder(inputArray, 3);
 
-        assertTrue(result.isEmpty());
+        Assertions.assertTrue(result.isEmpty());
     }
 
     @Test public void EveryPair_Linear() {
@@ -71,8 +69,8 @@ public class PairSumTest {
         List<Pair<Integer, Integer>> result =
                 findSums.findLinearComplexityOrder(inputArray, inputValue);
 
-        assertTrue(result.contains(new Pair<Integer, Integer>(2, 5)));
-        assertTrue(result.contains(new Pair<Integer, Integer>(1, 6)));
+        Assertions.assertTrue(result.contains(new Pair<Integer, Integer>(2, 5)));
+        Assertions.assertTrue(result.contains(new Pair<Integer, Integer>(1, 6)));
     }
 
     @Test public void NegativeIntegers_Linear() {
@@ -82,6 +80,6 @@ public class PairSumTest {
         List<Pair<Integer, Integer>> result =
                 findSums.findLinearComplexityOrder(inputArray, inputValue);
 
-        assertTrue(result.contains(new Pair<Integer, Integer>(9, -17)));
+        Assertions.assertTrue(result.contains(new Pair<Integer, Integer>(9, -17)));
     }
 }

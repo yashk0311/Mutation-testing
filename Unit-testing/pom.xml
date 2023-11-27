@@ -71,9 +71,11 @@
                 <configuration>
                     <targetClasses>
                         <param>dsa.algorithms.*</param>
+                        <param>dsa.LinkedListTest.*</param>
                     </targetClasses>
                     <targetTests>
                         <param>dsa.algorithmsTest.*</param>
+                        <param>dsa.LinkedListTest.*</param>
                     </targetTests>
                 </configuration>
             </plugin>

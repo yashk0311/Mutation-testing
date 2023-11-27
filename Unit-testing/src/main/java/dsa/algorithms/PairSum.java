@@ -1,5 +1,7 @@
 package dsa.algorithms;
 
+import helper.methods.Pair;
+
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;

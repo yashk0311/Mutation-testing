@@ -1,7 +1,11 @@
+dsa/LinkedListTest/MiddleElementTest.class
 dsa/algorithmsTest/SetZerosTest.class
-dsa/algorithmsTest/ReverseLLTest.class
 dsa/algorithmsTest/MissingNumberTest.class
+dsa/LinkedListTest/SumListsTest.class
 dsa/algorithmsTest/KnapsackTest.class
+dsa/LinkedListTest/PalindromeListTest.class
+dsa/LinkedListTest/FindKthElementTest.class
+dsa/algorithmsTest/SquareRootTest.class
 dsa/algorithmsTest/SplitArrayTest.class
 dsa/algorithmsTest/RemDupElementsTest.class
 dsa/algorithmsTest/PairSumTest.class
@@ -9,11 +13,8 @@ dsa/algorithmsTest/BitsCounterTest.class
 dsa/algorithmsTest/RotateMatrixTest.class
 dsa/algorithmsTest/MoveZerosTest.class
 dsa/algorithmsTest/MinPathSumTest.class
-dsa/algorithmsTest/SumListsTest.class
+dsa/LinkedListTest/LLRemoveDuplicatesTest.class
 dsa/algorithmsTest/FactorialTest.class
 dsa/algorithmsTest/LongestConsecSeqTest.class
-dsa/algorithmsTest/MiddleElementTest.class
-dsa/algorithmsTest/FindKthElementTest.class
-dsa/algorithmsTest/LLRemoveDuplicatesTest.class
-dsa/algorithmsTest/PalindromeListTest.class
+dsa/LinkedListTest/ReverseLLTest.class
 dsa/algorithmsTest/StrassenMMTest.class
