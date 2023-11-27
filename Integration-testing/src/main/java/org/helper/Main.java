@@ -1,4 +1,6 @@
-package org.softtest;
+package org.helper;
+
+import org.softtest.*;
 
 import java.util.*;
 
@@ -9,8 +11,8 @@ public class Main {
 
         do {
             System.out.println("\nAlgorithm Menu");
-            System.out.println("1. org.softtest.Graph Algorithms");
-            System.out.println("2. org.softtest.Tree Algorithms");
+            System.out.println("1. Graph Algorithms");
+            System.out.println("2. Tree Algorithms");
             System.out.println("3. Sorting Algorithms");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");
@@ -25,6 +27,9 @@ public class Main {
                     break;
                 case 3:
                     testSortingAlgorithms();
+                    break;
+                case 4:
+                    performTrieAndWordSearch();
                     break;
                 case 0:
                     System.out.println("Exiting... Thank you!");
@@ -58,6 +63,7 @@ public class Main {
     private static void performTreeAlgorithms() {
         System.out.println("Performing tree algorithms...");
         BinaryTree binaryTree = createSampleBinaryTree();
+
         binaryTree.insert(5);
         binaryTree.insert(3);
         binaryTree.insert(7);
@@ -65,7 +71,8 @@ public class Main {
         binaryTree.insert(4);
         binaryTree.insert(6);
         binaryTree.insert(8);
-        binaryTree.inOrderTraversal();
+
+        List<Integer> inOrderResult = binaryTree.inOrderTraversal();
         int height = binaryTree.getHeightOfTree();
         System.out.println("Height of the binary tree: " + height);
 
@@ -73,13 +80,33 @@ public class Main {
         System.out.println("Value 7 found in the binary tree: " + isFound);
 
         binaryTree.delete(3);
-        binaryTree.inOrderTraversal();
+        List<Integer> updatedInOrderResult = binaryTree.inOrderTraversal();
 
-        System.out.println("Pre-order traversal of the binary tree:");
-        binaryTree.preOrderTraversal(binaryTree.root);
+        List<Integer> preOrderResult = binaryTree.preOrderTraversal(binaryTree.root);
+        List<Integer> postOrderResult = binaryTree.postOrderTraversal(binaryTree.root);
 
-        System.out.println("\nPost-order traversal of the binary tree:");
-        binaryTree.postOrderTraversal(binaryTree.root);
+        List<Integer> levelOrderResult = binaryTree.levelOrderTraversal(binaryTree.root);
+    }
+
+    private static void performTrieAndWordSearch() {
+        // Implement Trie and WordSearch functionalities here
+        System.out.println("Performing Trie and Word Search...");
+
+        // Create a sample board for word search
+        char[][] board = {
+                {'o', 'a', 'a', 'n'},
+                {'e', 't', 'a', 'e'},
+                {'i', 'h', 'k', 'r'},
+                {'i', 'f', 'l', 'v'}
+        };
+
+        // Sample word
+        String word = "oath";
+
+        WordSearch wordSearch = new WordSearch();
+        boolean wordExists = wordSearch.exist(board, word);
+
+        System.out.println("Word '" + word + "' exists on the board: " + wordExists);
     }
 
     private static Graph createSampleGraph() {
