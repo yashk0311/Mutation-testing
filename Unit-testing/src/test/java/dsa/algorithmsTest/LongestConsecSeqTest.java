@@ -98,8 +98,7 @@ public class LongestConsecSeqTest {
         assertEquals(7, sequenceLength);
     }
 
-    @Test
-    public void tc4_Recursive() {
+    @Test public void tc4_Recursive() {
         int[] array = { 1, 1, 1, 1, 3, 4, 5, 64, 4, 5, 6, 7, 8, 9, 98, -1, -2 };
 
         int sequenceLength = lcs.findRecursive(array);
