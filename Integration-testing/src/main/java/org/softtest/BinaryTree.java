@@ -1,5 +1,5 @@
 package org.softtest;
-
+import java.util.*;
 public class BinaryTree extends Tree {
 
     public BinaryTree() {
@@ -76,7 +76,7 @@ public class BinaryTree extends Tree {
     }
 
     // Helper method to find the minimum value in the binary tree
-    private int minValue(TreeNode node) {
+    public int minValue(TreeNode node) {
         int minValue = node.val;
         while (node.left != null) {
             minValue = node.left.val;
@@ -86,20 +86,62 @@ public class BinaryTree extends Tree {
     }
 
     // Pre-order traversal for binary tree
-    public void preOrderTraversal(TreeNode node) {
+    public List<Integer> preOrderTraversal(TreeNode node) {
+        List<Integer> result = new ArrayList<>();
+        preOrderTraversalUtil(node, result);
+        //System.out.print("Pre-order Traversal: ");
+        result.forEach(val -> System.out.print(val + " "));
+        return result;
+    }
+
+    private void preOrderTraversalUtil(TreeNode node, List<Integer> result) {
         if (node != null) {
-            System.out.print(node.val + " ");
-            preOrderTraversal(node.left);
-            preOrderTraversal(node.right);
+            result.add(node.val);
+            preOrderTraversalUtil(node.left, result);
+            preOrderTraversalUtil(node.right, result);
         }
     }
 
-    // Post-order traversal for binary tree
-    public void postOrderTraversal(TreeNode node) {
+    public List<Integer> postOrderTraversal(TreeNode node) {
+        List<Integer> result = new ArrayList<>();
+        postOrderTraversalUtil(node, result);
+        //System.out.print("Post-order Traversal: ");
+        result.forEach(val -> System.out.print(val + " "));
+        return result;
+    }
+
+    private void postOrderTraversalUtil(TreeNode node, List<Integer> result) {
         if (node != null) {
-            postOrderTraversal(node.left);
-            postOrderTraversal(node.right);
-            System.out.print(node.val + " ");
+            postOrderTraversalUtil(node.left, result);
+            postOrderTraversalUtil(node.right, result);
+            result.add(node.val);
         }
     }
+
+    public List<Integer> levelOrderTraversal(TreeNode node) {
+        List<Integer> result = new ArrayList<>();
+        if (node == null) {
+            return result;
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.offer(node);
+
+        while (!queue.isEmpty()) {
+            TreeNode current = queue.poll();
+            result.add(current.val);
+
+            if (current.left != null) {
+                queue.offer(current.left);
+            }
+            if (current.right != null) {
+                queue.offer(current.right);
+            }
+        }
+
+        System.out.print("Level-order Traversal: ");
+        result.forEach(val -> System.out.print(val + " "));
+        return result;
+    }
+
 }

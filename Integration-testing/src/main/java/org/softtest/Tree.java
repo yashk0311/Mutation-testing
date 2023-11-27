@@ -1,29 +1,36 @@
 package org.softtest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Tree {
-    protected TreeNode root;
+    public TreeNode root;
 
     public Tree() {
         root = null;
     }
 
-    protected void inOrder(TreeNode node) {
+    protected List<Integer> inOrder(TreeNode node) {
+        List<Integer> result = new ArrayList<>();
         if (node != null) {
-            inOrder(node.left);
+            result.addAll(inOrder(node.left));
             System.out.print(node.val + " ");
-            inOrder(node.right);
+            result.add(node.val);
+            result.addAll(inOrder(node.right));
         }
+        return result;
     }
 
-    public void inOrderTraversal() {
+    public List<Integer> inOrderTraversal() {
         System.out.print("In-order Traversal: ");
-        inOrder(root);
+        List<Integer> traversalResult = inOrder(root);
         System.out.println();
+        return traversalResult;
     }
 
     protected int getHeight(TreeNode node) {
         if (node == null) {
-            return -1;
+            return 0;
         } else {
             int leftHeight = getHeight(node.left);
             int rightHeight = getHeight(node.right);

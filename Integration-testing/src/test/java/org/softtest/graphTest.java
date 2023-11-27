@@ -1,5 +1,6 @@
 package org.softtest;
 import org.junit.jupiter.api.Test;
+import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class graphTest {
@@ -64,5 +65,26 @@ public class graphTest {
         int[] topologicalResult = topoSort.topologicalSort();
         int[] expectedTopological = {5, 4, 2, 3, 1, 0};
         assertArrayEquals(expectedTopological, topologicalResult);
+    }
+
+    @Test
+    public void testShortestPathBFS(){
+        ShortestPathBFS graph;
+        graph = new ShortestPathBFS(6);
+
+        // Adding edges to the graph
+        graph.addEdge(0, 1);
+        graph.addEdge(0, 2);
+        graph.addEdge(1, 3);
+        graph.addEdge(1, 4);
+        graph.addEdge(2, 4);
+        graph.addEdge(3, 5);
+        graph.addEdge(4, 5);
+
+        graph.shortestPath(0, 5);
+        ArrayList<Integer> shortestPath = graph.shortestPath(0, 5);
+        assertEquals(4, shortestPath.size());
+        assertEquals(0, (int)shortestPath.get(0));
+        assertEquals(3, (int)shortestPath.get(2));
     }
 }
