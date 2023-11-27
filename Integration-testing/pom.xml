@@ -68,10 +68,15 @@
                         <param>org.softtest.*</param>
                     </targetTests>
                     <mutators>
-                        <mutator>DEFAULTS</mutator>
+<!--                        <mutator>DEFAULTS</mutator>-->
+                        <mutator>NEGATE_CONDITIONALS</mutator>
+                        <mutator>MATH</mutator>
+                        <mutator>RETURN_VALS</mutator>
+                        <mutator>NON_VOID_METHOD_CALLS</mutator>
                         <mutator>EXPERIMENTAL_ARGUMENT_PROPAGATION</mutator>
                         <mutator>EXPERIMENTAL_MEMBER_VARIABLE</mutator>
                         <mutator>CONSTRUCTOR_CALLS</mutator>
+                        <mutator>INCREMENTS</mutator>
                     </mutators>
                 </configuration>
             </plugin>

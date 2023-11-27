@@ -76,7 +76,7 @@ public class BinaryTree extends Tree {
     }
 
     // Helper method to find the minimum value in the binary tree
-    private int minValue(TreeNode node) {
+    public int minValue(TreeNode node) {
         int minValue = node.val;
         while (node.left != null) {
             minValue = node.left.val;
@@ -89,9 +89,8 @@ public class BinaryTree extends Tree {
     public List<Integer> preOrderTraversal(TreeNode node) {
         List<Integer> result = new ArrayList<>();
         preOrderTraversalUtil(node, result);
-        System.out.print("Pre-order Traversal: ");
+        //System.out.print("Pre-order Traversal: ");
         result.forEach(val -> System.out.print(val + " "));
-        System.out.println();
         return result;
     }
 
@@ -106,9 +105,8 @@ public class BinaryTree extends Tree {
     public List<Integer> postOrderTraversal(TreeNode node) {
         List<Integer> result = new ArrayList<>();
         postOrderTraversalUtil(node, result);
-        System.out.print("Post-order Traversal: ");
+        //System.out.print("Post-order Traversal: ");
         result.forEach(val -> System.out.print(val + " "));
-        System.out.println();
         return result;
     }
 
@@ -143,7 +141,6 @@ public class BinaryTree extends Tree {
 
         System.out.print("Level-order Traversal: ");
         result.forEach(val -> System.out.print(val + " "));
-        System.out.println();
         return result;
     }
 

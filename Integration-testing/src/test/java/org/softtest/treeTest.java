@@ -67,5 +67,31 @@ public class treeTest {
         List<Integer> expectedAfterDeletion = List.of(2, 3, 5, 6, 7, 8);
         List<Integer> result = binaryTree.inOrderTraversal();
         assertEquals(expectedAfterDeletion, result);
+        binaryTree.delete(2);
+        assertFalse(binaryTree.search(2));
+
+        // Test deletion of a node with one child
+        binaryTree.delete(3);
+        assertFalse(binaryTree.search(3));
+        assertTrue(binaryTree.search(8));
+
+        // Test deletion of a node with two children
+        binaryTree.delete(5);
+        assertFalse(binaryTree.search(5));
+        assertTrue(binaryTree.search(6));
+        assertTrue(binaryTree.search(7));
+    }
+
+    @Test
+    public void testMinValue(){
+        assertEquals(2, binaryTree.minValue(binaryTree.root));
+    }
+
+    @Test
+    public void buildInvalidTree(){
+        binaryTree = new BinaryTree();
+        binaryTree.insert(5);
+        binaryTree.insert(5);
+        binaryTree.insert(5);
     }
 }

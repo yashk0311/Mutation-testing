@@ -23,7 +23,7 @@ public class ShortestPathBFS extends Graph {
             int current = queue.poll();
 
             if (current == end) {
-                System.out.println("Shortest distance from " + start + " to " + end + " is " + dist[end]);
+                //System.out.println("Shortest distance from " + start + " to " + end + " is " + dist[end]);
                 return reconstructShortestPath(start, end, prev);
             }
 
@@ -37,7 +37,7 @@ public class ShortestPathBFS extends Graph {
             }
         }
 
-        System.out.println("No path exists from " + start + " to " + end);
+        //System.out.println("No path exists from " + start + " to " + end);
         return new ArrayList<>();
     }
 
