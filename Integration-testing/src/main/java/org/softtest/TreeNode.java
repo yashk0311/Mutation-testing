@@ -1,3 +1,5 @@
+package org.softtest;
+
 public class TreeNode {
     int val;
     TreeNode left;

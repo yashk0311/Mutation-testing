@@ -1,3 +1,5 @@
+package org.softtest;
+
 import java.util.*;
 
 public class Main {
@@ -7,8 +9,8 @@ public class Main {
 
         do {
             System.out.println("\nAlgorithm Menu");
-            System.out.println("1. Graph Algorithms");
-            System.out.println("2. Tree Algorithms");
+            System.out.println("1. org.softtest.Graph Algorithms");
+            System.out.println("2. org.softtest.Tree Algorithms");
             System.out.println("3. Sorting Algorithms");
             System.out.println("0. Exit");
             System.out.print("Enter your choice: ");

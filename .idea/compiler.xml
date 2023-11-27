@@ -10,5 +10,9 @@
         <module name="SoftwareTesting" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="SoftwareTesting" target="1.8" />
+      <module name="Unit-testing" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
